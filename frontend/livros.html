@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gerenciamento de Livros — Biblioteca Central</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/user-icon.css">
+  <link rel="stylesheet" href="css/livros.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+      <div class="user-icon">
+          <img alt="Usuário logado">
+          <p class="user-name">Administrador</p>
+      </div>
+      <nav class="menu">
+          <a href="dashboard.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <span>Início</span>
+          </a>
+          <a href="livros.html" class="active">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>Gerenciar Livros</span>
+          </a>
+          <div class="menu-spacer"></div>
+          <a href="index.html" class="menu-logout">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>Sair da Conta</span>
+          </a>
+      </nav>
+  </div>
+
+  <main class="main">
+    <div class="container">
+      <section class="card" aria-labelledby="livrosTitle">
+        <header class="page-header">
+          <div>
+            <h2 id="livrosTitle">Gerenciamento de Livros</h2>
+            <p class="page-sub">Cadastre e gerencie o acervo — adicione, edite ou remova livros com facilidade.</p>
+          </div>
+          <div class="kv">Acervo</div>
+        </header>
+
+        <form id="livroForm" class="form-grid two-cols mt-8" aria-label="Formulário de livros">
+          <input type="hidden" id="livroId">
+          <div class="form-group">
+            <label for="titulo">Título</label>
+            <input id="titulo" name="titulo" type="text" required class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="autor">Autor</label>
+            <input id="autor" name="autor" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="ano">Ano</label>
+            <input id="ano" name="ano" type="number" min="0" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="genero">Gênero</label>
+            <input id="genero" name="genero" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="quantidade">Quantidade</label>
+            <input id="quantidade" name="quantidade" type="number" value="1" min="0" class="form-control">
+          </div>
+
+          <div class="form-actions mt-8">
+            <button type="submit" class="btn btn-primary">Cadastrar Livro</button>
+            <button type="button" id="limpar" class="btn btn-secondary">Limpar</button>
+          </div>
+        </form>
+
+      </section>
+
+      <section class="mt-12">
+        <div class="card">
+          <h3>Lista de Livros</h3>
+          <div class="table-container mt-8 table-responsive">
+            <table id="livrosTable" aria-label="Tabela de livros">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Título</th>
+                  <th>Autor</th>
+                  <th>Ano</th>
+                  <th>Gênero</th>
+                  <th>Quantidade</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small class="muted">© Biblioteca Central</small>
+    </div>
+  </footer>
+
+  <script src="js/livros.js"></script>
+</body>
+</html>

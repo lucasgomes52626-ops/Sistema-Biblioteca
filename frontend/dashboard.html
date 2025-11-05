@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Biblioteca Central</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Sofisticada -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="library-brand">
+                    <svg class="library-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    <h2 class="sidebar-title">Biblioteca</h2>
+                </div>
+            </div>
+            <nav class="menu">
+                <div class="menu-section">
+                    <p class="section-title">Principal</p>
+                    <a href="#" class="menu-item active" data-section="overview" title="Visão Geral" tabindex="0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        <span class="menu-item-text">Visão Geral</span>
+                    </a>
+                    <a href="#" class="menu-item" data-section="users" title="Usuários" tabindex="0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <span class="menu-item-text">Usuários</span>
+                    </a>
+                    <a href="#" class="menu-item" data-section="books" title="Livros" tabindex="0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        <span class="menu-item-text">Livros</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path></svg>
+                    </div>
+                    <div class="user-info menu-item-text">
+                        <span class="user-name">Administrador</span>
+                        <span class="user-role">Biblioteca Central</span>
+                    </div>
+                </div>
+                <div class="menu-section">
+                    <a href="#" id="logoutBtn" class="menu-item menu-logout" title="Sair da Conta" tabindex="0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                        <span class="menu-item-text">Sair</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+        <button id="mobileMenuToggle" class="mobile-menu-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div id="notification-container"></div>
+        <!-- Overview Section -->
+        <section id="overview" class="content-section active">
+            <h1>Visão Geral do Sistema</h1>
+            <div class="stats-grid" style="margin-bottom: 2rem;">
+                <div class="stat-card">
+                    <div class="stat-icon users">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Usuários Cadastrados</h3>
+                        <p class="stat-number" id="userCount">0</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon books">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Livros Disponíveis</h3>
+                        <p class="stat-number" id="bookCount">0</p>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="recent-activity">
+                <h2>Atividade Recente</h2>
+                <div class="activity-list" id="recentActivity"></div>
+            </div>
+        </section>
+        <!-- Users Section -->
+        <section id="users" class="content-section">
+            <div class="section-header">
+                <h1>Gerenciar Usuários</h1>
+                <div class="user-count-container">
+                    <span id="user-total-count">0</span> usuários cadastrados
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="card" style="padding:1.5rem;">
+                    <h2 id="user-form-title">Adicionar Novo Usuário</h2>
+                    <form id="userForm" class="form-grid">
+                        <input type="hidden" id="userId" name="id">
+                        <div class="form-group">
+                            <label for="userName">Nome Completo</label>
+                            <input id="userName" name="name" type="text" required placeholder="Ex: João da Silva">
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input id="userEmail" name="email" type="email" required placeholder="Ex: joao.silva@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="userPhone">Telefone</label>
+                            <input id="userPhone" name="phone" type="tel" placeholder="Ex: (11) 98765-4321">
+                        </div>
+                        <div class="form-group">
+                            <label for="userAddress">Endereço</label>
+                            <input id="userAddress" name="address" type="text" placeholder="Ex: Rua das Flores, 123">
+                        </div>
+                        <div class="form-actions grid-col-span-2">
+                            <button id="userSubmitBtn" class="btn btn-primary" type="submit">Cadastrar Usuário</button>
+                            <button id="clearUserFormBtn" class="btn btn-secondary" type="button">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="toolbar">
+                <div class="search-container">
+                    <input type="text" id="userSearch" placeholder="Buscar por nome ou email...">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
+            </div>
+
+            <div class="table-container" style="margin-top:1rem;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Endereço</th>
+                            <th class="actions-header">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+        <!-- Books Section -->
+        <section id="books" class="content-section">
+            <h1>Gerenciar Livros</h1>
+            <div class="form-container">
+                <div class="card" style="padding:1rem;">
+                    <form id="bookForm" class="form-grid">
+                        <div class="form-group">
+                            <label for="b_title">Título:</label>
+                            <input id="b_title" name="title" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="b_author">Autor:</label>
+                            <input id="b_author" name="author" type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="b_genre">Categoria:</label>
+                            <select id="b_genre" name="genre">
+                                <option value="Literatura Brasileira">Literatura Brasileira</option>
+                                <option value="Fantasia">Fantasia</option>
+                                <option value="Ficção Científica">Ficção Científica</option>
+                                <option value="Filosofia">Filosofia</option>
+                                <option value="História">História</option>
+                                <option value="Infantil">Infantil</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="b_year">Ano:</label>
+                            <input id="b_year" name="year" type="number" min="0">
+                        </div>
+                        <div class="form-group grid-col-span-2">
+                            <label for="b_desc">Descrição:</label>
+                            <textarea id="b_desc" name="description" rows="3"></textarea>
+                        </div>
+                        <div class="form-group grid-col-span-2">
+                            <label for="b_pdf">Arquivo PDF do Livro</label>
+                            <div class="file-input-container">
+                                <input type="file" id="b_pdf" name="pdf" accept=".pdf" class="form-control">
+                                <small class="file-help">Selecione um arquivo PDF do livro (opcional)</small>
+                            </div>
+                        </div>
+                        <div class="form-group grid-col-span-2">
+                            <label for="b_cover">Capa do Livro</label>
+                            <div class="file-input-container">
+                                <input type="file" id="b_cover" name="cover" accept="image/*" class="form-control">
+                                <small class="file-help">Selecione uma imagem para a capa (opcional)</small>
+                            </div>
+                        </div>
+                        <div class="form-actions grid-col-span-2" style="margin-top:0.5rem">
+                            <button id="addBookBtn" class="btn btn-primary" type="submit">Registrar Livro</button>
+                            <button id="clearBookForm" type="button" class="btn btn-secondary">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="books-grid" id="booksGrid" style="margin-top:1rem"></div>
+        </section>
+        <style>
+            .main-content {
+                padding: 2rem;
+            }
+        </style>
+    </main>
+    </div>
+    <div id="editBookModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Editar Livro</h2>
+            <form id="editBookForm" class="form-grid">
+                <input type="hidden" id="edit_book_id">
+                <div class="form-group">
+                    <label for="edit_b_title">Título</label>
+                    <input id="edit_b_title" name="title" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit_b_author">Autor</label>
+                    <input id="edit_b_author" name="author" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit_b_genre">Gênero</label>
+                    <select id="edit_b_genre" name="genre">
+                        <option value="Literatura Brasileira">Literatura Brasileira</option>
+                        <option value="Fantasia">Fantasia</option>
+                        <option value="Ficção Científica">Ficção Científica</option>
+                        <option value="Filosofia">Filosofia</option>
+                        <option value="História">História</option>
+                        <option value="Infantil">Infantil</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit_b_year">Ano</label>
+                    <input id="edit_b_year" name="year" type="number" min="0">
+                </div>
+                <div class="form-group grid-col-span-2">
+                    <label for="edit_b_desc">Descrição</label>
+                    <textarea id="edit_b_desc" name="description" rows="3"></textarea>
+                </div>
+                <div class="form-group grid-col-span-2">
+                    <label for="edit_b_cover">Capa do Livro</label>
+                    <div class="file-input-container">
+                        <input type="file" id="edit_b_cover" name="cover" accept="image/*" class="form-control">
+                        <small class="file-help">Selecione uma imagem para a capa (opcional)</small>
+                    </div>
+                </div>
+                <div class="form-group grid-col-span-2">
+                    <label for="edit_b_pdf">Arquivo PDF do Livro</label>
+                    <div class="file-input-container">
+                        <input type="file" id="edit_b_pdf" name="pdf" accept=".pdf" class="form-control">
+                        <small class="file-help">Selecione um novo PDF para substituir o atual (opcional)</small>
+                    </div>
+                </div>
+                <div class="form-actions grid-col-span-2" style="margin-top:0.5rem">
+                    <button id="saveBookChanges" class="btn btn-primary" type="submit">Salvar Alterações</button>
+                    <button id="cancelEdit" type="button" class="btn btn-secondary">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login — Biblioteca Central</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <main class="login-root">
+    <div class="login-card" role="main" aria-labelledby="loginTitle">
+      <h1 id="loginTitle">Biblioteca Central</h1>
+      <p class="sub">Área de Administração</p>
+
+      <form id="loginForm" class="login-form" autocomplete="off">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="admin@biblioteca.com">
+        </div>
+
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input id="senha" name="senha" type="password" required placeholder="••••••">
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="button" id="limparForm" class="btn btn-secondary">Limpar</button>
+        </div>
+
+        <div class="messages">
+          <div id="successMessage" class="msg success" style="display:none"></div>
+          <div id="errorMessage" class="msg error" style="display:none"></div>
+        </div>
+      </form>
+
+      <p class="cred">Use <strong>admin@biblioteca.com</strong> / <strong>1234</strong></p>
+    </div>
+  </main>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
+
+  <main class="main">
+    <div class="container">
+      <section class="card" aria-labelledby="welcomeTitle">
+        <header class="page-header">
+          <div>
+            <h2 id="welcomeTitle">Bem-vindo à Biblioteca Virtual</h2>
+            <p class="page-sub">Um sistema simples para gerenciar livros, leitores e empréstimos — organizado, tranquilo e prático.</p>
+          </div>
+          <div class="kv">Organize seus acervos</div>
+        </header>
+
+        <div class="row">
+          <div class="col">
+            <p class="muted">Use o menu acima para acessar o gerenciamento de Livros, Usuários e Empréstimos. O sistema foi pensado para fluxo de trabalho leve e atendimento rápido.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <div class="card">
+          <h3>Acesso ao Sistema</h3>
+          <div class="row center mt-8">
+            <a class="btn btn-accent" href="login.html">
+              <span aria-hidden="true">📖</span> Login
+            </a>
+            <a class="btn btn-dark" href="#">
+              <span aria-hidden="true">🔐</span> Cadastrar
+            </a>
+          </div>
+        </div>
+
+        <div class="card mt-12">
+          <h3>Atalhos Rápidos</h3>
+          <div class="row mt-8">
+            <a class="btn btn-primary" href="livros.html">Ir para Livros</a>
+            <a class="btn btn-ghost" href="emprestimos.html">Ir para Empréstimos</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Biblioteca Central — Todos os direitos reservados</small>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
